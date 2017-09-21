@@ -45,6 +45,8 @@ namespace Ocean.Server.Computer
                     if (fileName.Contains(@"/") || fileName.Contains(@"\"))
                         fileName = Path.GetFileName(fileName);
 
+                    var fileinfo = new FileInfo(fileData.LocalFileName);
+                    var fileSize = fileinfo.Length;
                     var ext = Path.GetExtension(fileName);
                     var curFileDirExt = curFileDir + "\\" + ext;
                     if (!Directory.Exists(curFileDirExt)) Directory.CreateDirectory(curFileDirExt);
@@ -56,7 +58,7 @@ namespace Ocean.Server.Computer
                         FileName = fileName,
                         Ext = ext,
                         FilePath = curFileDirExt,
-                        FileSize = fileData.Headers.ContentLength??0,
+                        FileSize = fileSize,
                         FileType = 1,
                         SrcIp = srcIp,
                         FileKey = "",
