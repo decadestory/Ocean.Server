@@ -16,6 +16,7 @@ namespace Ocean.Server.Controllers
     public class OceanController : ApiController
     {
         private UploadComputer computer = new UploadComputer();
+        private DownLoadComputer dcomputer = new DownLoadComputer();
 
         [HttpGet]
         public string Test()
@@ -28,5 +29,24 @@ namespace Ocean.Server.Controllers
         {
             return await computer.HandleUpload(Request);
         }
+
+        [HttpGet]
+        public void DownLoad(int id)
+        {
+            dcomputer.DownLoad(id);
+        }
+
+        [HttpGet]
+        public void ShowDoc(int id)
+        {
+            dcomputer.ShowDoc(id);
+        }
+
+        [HttpGet]
+        public void ShowImg(int id)
+        {
+            dcomputer.ShowImg(id);
+        }
+
     }
 }

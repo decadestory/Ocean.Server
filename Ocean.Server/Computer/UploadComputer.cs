@@ -45,6 +45,11 @@ namespace Ocean.Server.Computer
                     if (fileName.Contains(@"/") || fileName.Contains(@"\"))
                         fileName = Path.GetFileName(fileName);
 
+                    var fileOriginName = fileData.Headers.ContentDisposition.FileName;
+                    var fileContentType = fileData.Headers.ContentType.MediaType;
+
+
+
                     var fileinfo = new FileInfo(fileData.LocalFileName);
                     var fileSize = fileinfo.Length;
                     var ext = Path.GetExtension(fileName);
@@ -60,6 +65,8 @@ namespace Ocean.Server.Computer
                         FilePath = curFileDirExt,
                         FileSize = fileSize,
                         FileType = 1,
+                        OriginName = fileOriginName,
+                        ContentType = fileContentType,
                         SrcIp = srcIp,
                         FileKey = "",
                         Version = "1",

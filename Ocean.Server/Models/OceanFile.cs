@@ -22,6 +22,10 @@ namespace Ocean.Server.Models
         public string Ext { get; set; }
         [Description("七牛Id")]
         public string FileKey { get; set; }
+        [Description("上传文件名")]
+        public string OriginName { get; set; }
+        [Description("ContentType")]
+        public string ContentType { get; set; }
         [Description("版本号")]
         public string Version { get; set; }
         [Description("上传IP")]

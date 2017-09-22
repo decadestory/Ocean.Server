@@ -17,5 +17,14 @@ namespace Ocean.Server.DataCore
                 return result;
             }
         }
+
+        public OceanFile GetFileById(int fileId)
+        {
+            using (var db = new OsConn())
+            {
+                var file = db.Find<OceanFile>(fileId);
+                return file;
+            }
+        }
     }
 }
