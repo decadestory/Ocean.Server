@@ -37,6 +37,7 @@ namespace Ocean.Server.Computer
             var bytes = new byte[(int)fs.Length];
             fs.Read(bytes, 0, bytes.Length);
             fs.Close();
+
             //通知浏览器下载文件而不是打开
             HttpContext.Current.Response.AddHeader("Content-Disposition", "inline; filename=" + HttpUtility.UrlEncode(file.FileName, System.Text.Encoding.UTF8));
             HttpContext.Current.Response.BinaryWrite(bytes);
@@ -44,7 +45,7 @@ namespace Ocean.Server.Computer
             HttpContext.Current.Response.End();
         }
 
-        public void ShowImg(int fileId)
+        public void Show(int fileId)
         {
             var file = data.GetFileById(fileId);
 

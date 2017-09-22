@@ -43,9 +43,9 @@ namespace Ocean.Server.Controllers
         }
 
         [HttpGet]
-        public void ShowImg(int id)
+        public void Show(int id)
         {
-            dcomputer.ShowImg(id);
+            dcomputer.Show(id);
         }
 
     }
