@@ -17,7 +17,7 @@ namespace Ocean.Server.Computer
         public readonly string UploadPathDir = DateTime.Now.ToString("yyyy-MM-dd-HH");
         private OceanFileData data = new OceanFileData();
 
-        public async Task<DataResult> HandleUpload(HttpRequestMessage request)
+        public async Task<DataResult> HandleUpload(HttpRequestMessage request,string version)
         {
             if (!request.Content.IsMimeMultipartContent("form-data"))
                 return new DataResult { Code = 500, FileIds = new List<long>(), Message = "Not MimeMultipart Content" };
@@ -46,8 +46,10 @@ namespace Ocean.Server.Computer
                         fileName = Path.GetFileName(fileName);
 
                     var fileOriginName = fileData.Headers.ContentDisposition.FileName;
+                    fileOriginName = fileOriginName.Trim('\"');
                     var fileContentType = fileData.Headers.ContentType.MediaType;
 
+                    version = version.Replace("_",".");
 
 
                     var fileinfo = new FileInfo(fileData.LocalFileName);
@@ -69,7 +71,7 @@ namespace Ocean.Server.Computer
                         ContentType = fileContentType,
                         SrcIp = srcIp,
                         FileKey = "",
-                        Version = "1",
+                        Version = version,
                         AddTime = DateTime.Now
                     };
 

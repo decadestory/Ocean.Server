@@ -16,9 +16,11 @@ namespace Ocean.Server
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "{controller}/{action}/{id}",
-                defaults: new { controller = "Ocean", action ="Test", id = RouteParameter.Optional }
+                routeTemplate: "{action}/{id}",
+                defaults: new { controller = "Ocean", action = "Test", id = RouteParameter.Optional }
             );
+
+
         }
     }
 }

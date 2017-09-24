@@ -91,7 +91,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Computer\DownLoadComputer.cs" />
-    <Compile Include="Computer\FileConverter.cs" />
+    <Compile Include="Computer\ManageComputer.cs" />
     <Compile Include="Computer\UploadComputer.cs" />
     <Compile Include="Controllers\OceanController.cs" />
     <Compile Include="DataCore\OceanFileData.cs" />

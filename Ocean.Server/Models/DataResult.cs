@@ -11,4 +11,12 @@ namespace Ocean.Server.Models
         public List<long> FileIds { get; set; }
         public string Message { get; set; }
     }
+
+    public class DataResult<T>
+    {
+        public int Code { get; set; }
+        public List<T> Data { get; set; }
+        public string Message { get; set; }
+    }
+
 }

@@ -17,6 +17,7 @@ namespace Ocean.Server.Controllers
     {
         private UploadComputer computer = new UploadComputer();
         private DownLoadComputer dcomputer = new DownLoadComputer();
+        private ManageComputer mcomputer = new ManageComputer();
 
         [HttpGet]
         public string Test()
@@ -25,9 +26,9 @@ namespace Ocean.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<DataResult>  Upload()
+        public async Task<DataResult> Upload(string id = "1_0")
         {
-            return await computer.HandleUpload(Request);
+            return await computer.HandleUpload(Request,id);
         }
 
         [HttpGet]
@@ -46,6 +47,26 @@ namespace Ocean.Server.Controllers
         public void Show(int id)
         {
             dcomputer.Show(id);
+        }
+
+        [HttpGet]
+        public void Cdn(string id, string ver = "1")
+        {
+            dcomputer.Cdn(id, ver);
+        }
+
+        [HttpGet]
+        public DataResult<OceanFile> List(string fileName, int page =1 ,int limit=20)
+        {
+            try
+            {
+                var result = mcomputer.List(fileName, page, limit);
+                return new DataResult<OceanFile> { Code = 200, Data = result };
+            }
+            catch (Exception ex)
+            {
+                return new DataResult<OceanFile> { Code = 500, Data = new List<OceanFile>(),Message = ex.Message };
+            }
         }
 
     }

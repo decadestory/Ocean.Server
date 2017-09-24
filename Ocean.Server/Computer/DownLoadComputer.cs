@@ -62,5 +62,22 @@ namespace Ocean.Server.Computer
             HttpContext.Current.Response.End();
         }
 
+        public void Cdn(string fileName,string version)
+        {
+            var file = data.GetFileById(fileName,version);
+
+            var filePath = file.FilePath + "/" + file.FileName;
+            var fs = new FileStream(filePath, FileMode.Open);
+            var bytes = new byte[(int)fs.Length];
+            fs.Read(bytes, 0, bytes.Length);
+            fs.Close();
+            HttpContext.Current.Response.ContentType = file.ContentType;
+            //通知浏览器下载文件而不是打开
+            HttpContext.Current.Response.AddHeader("Content-Disposition", "inline; filename=" + HttpUtility.UrlEncode(file.FileName, System.Text.Encoding.UTF8));
+            HttpContext.Current.Response.BinaryWrite(bytes);
+            HttpContext.Current.Response.Flush();
+            HttpContext.Current.Response.End();
+        }
+
     }
 }
