@@ -11,7 +11,7 @@ namespace Ocean.Server.Models
         [Description("文件Id")]
         public long Id { get; set; }
         [Description("文件类型：1，图片 2，音频 3，视频 4，文档，5，压缩包  6，js/css/html 7，app安装包 100，其它")]
-        public int FileType { get; set; }
+        public string FileType { get; set; }
         [Description("文件路径")]
         public string FilePath { get; set; }
         [Description("文件名")]

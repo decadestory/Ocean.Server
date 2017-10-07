@@ -15,5 +15,10 @@ namespace Ocean.Server.Computer
         {
             return data.List(fileName, page, limit);
         }
+
+        public SatasticData GetSatastic()
+        {
+            return data.GetSatastic();
+        }
     }
 }

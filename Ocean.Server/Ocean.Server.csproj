@@ -86,6 +86,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="static\css\app.8145bd2a19dbee77c66d3ae4362f3b27.css" />
+    <Content Include="static\js\app.400ffc1b93a058765d91.js" />
+    <Content Include="static\js\manifest.e9dd064bf429b2ba2747.js" />
+    <Content Include="static\js\vendor.0f5bc40ee37225bae930.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,10 +106,16 @@
     </Compile>
     <Compile Include="Models\DataResult.cs" />
     <Compile Include="Models\OceanFile.cs" />
+    <Compile Include="Models\SatasticData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="static\css\app.8145bd2a19dbee77c66d3ae4362f3b27.css.map" />
+    <Content Include="static\js\app.400ffc1b93a058765d91.js.map" />
+    <Content Include="static\js\manifest.e9dd064bf429b2ba2747.js.map" />
+    <Content Include="static\js\vendor.0f5bc40ee37225bae930.js.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

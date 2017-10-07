@@ -15,7 +15,7 @@ namespace Ocean.Server.Models
     public class DataResult<T>
     {
         public int Code { get; set; }
-        public List<T> Data { get; set; }
+        public T Data { get; set; }
         public string Message { get; set; }
     }
 

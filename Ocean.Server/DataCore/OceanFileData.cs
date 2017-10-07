@@ -47,5 +47,17 @@ namespace Ocean.Server.DataCore
             }
         }
 
+
+        public SatasticData GetSatastic()
+        {
+            using (var db = new OsConn())
+            {
+                var allCnt = db.ExecuteSql("select count(1) from  OceanFile (nolock)");
+                var staticCnt = db.ExecuteSql("select count(1) from  OceanFile (nolock) where Ext in ('.js','.css','.html')");
+                return new SatasticData { AllCnt =  Convert.ToInt64(allCnt), StaticCnt = Convert.ToInt64(staticCnt) };
+            }
+        }
+
+
     }
 }

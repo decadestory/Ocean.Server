@@ -56,16 +56,30 @@ namespace Ocean.Server.Controllers
         }
 
         [HttpGet]
-        public DataResult<OceanFile> List(string fileName, int page =1 ,int limit=20)
+        public DataResult<List<OceanFile>> List(string fileName, int page =1 ,int limit=20)
         {
             try
             {
                 var result = mcomputer.List(fileName, page, limit);
-                return new DataResult<OceanFile> { Code = 200, Data = result };
+                return new DataResult<List<OceanFile>> { Code = 200, Data = result };
             }
             catch (Exception ex)
             {
-                return new DataResult<OceanFile> { Code = 500, Data = new List<OceanFile>(),Message = ex.Message };
+                return new DataResult<List<OceanFile>> { Code = 500, Data = new List<OceanFile>(),Message = ex.Message };
+            }
+        }
+
+        [HttpGet]
+        public DataResult<SatasticData> GetSatastic()
+        {
+            try
+            {
+                var result = mcomputer.GetSatastic ();
+                return new DataResult<SatasticData> { Code = 200, Data = result };
+            }
+            catch (Exception ex)
+            {
+                return new DataResult<SatasticData> { Code = 500, Data = new SatasticData(), Message = ex.Message };
             }
         }
 

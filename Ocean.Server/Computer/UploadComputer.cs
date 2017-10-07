@@ -51,6 +51,8 @@ namespace Ocean.Server.Computer
 
                     version = version.Replace("_",".");
 
+                    var cate = HttpContext.Current.Request.QueryString["cate"];
+                    cate = string.IsNullOrWhiteSpace(cate) ? "" : cate;
 
                     var fileinfo = new FileInfo(fileData.LocalFileName);
                     var fileSize = fileinfo.Length;
@@ -66,7 +68,7 @@ namespace Ocean.Server.Computer
                         Ext = ext,
                         FilePath = curFileDirExt,
                         FileSize = fileSize,
-                        FileType = 1,
+                        FileType = cate,
                         OriginName = fileOriginName,
                         ContentType = fileContentType,
                         SrcIp = srcIp,
